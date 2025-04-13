@@ -1,0 +1,101 @@
+basePath: /api
+definitions:
+  model.Product:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      price:
+        type: number
+    type: object
+  model.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for an e-commerce system.
+  title: E-Commerce API
+  version: "1.0"
+paths:
+  /product:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        Adds a new product to the system.
+        ### Product Details
+        This endpoint allows you to add a new product to the system.
+        - **Name**: Name of the product
+        - **Price**: Product price in USD
+        - *Optional*: `description`, `tags`
+        Ensure that:
+        - The `product_id` is unique
+        - Price must be a positive number
+      parameters:
+      - description: Product Payload
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/model.Product'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a user.
+      tags:
+      - Products
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Adds a new user to the system
+      parameters:
+      - description: User Payload
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/model.User'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a user
+      tags:
+      - users
+swagger: "2.0"
