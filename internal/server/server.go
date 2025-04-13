@@ -35,8 +35,9 @@ func InitServer() error {
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	api := e.Group("/api")
-	routes.RegisterUserRoutes(api, container.UserHandler)
-	routes.RegisterProductRoutes(api, container.ProductHandler)
+	routes.RegisterAllRoutes(api, container)
+	// routes.RegisterUserRoutes(api, container.UserHandler)
+	// routes.RegisterProductRoutes(api, container.ProductHandler)
 
 	go func() {
 		fmt.Println("Running on port :" + cfg.Port)
