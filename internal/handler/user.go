@@ -29,6 +29,7 @@ func NewUserHandler(u *usecase.UserUsecase) *UserHandler {
 // @Failure      500   {object}  map[string]interface{}
 // @Router       /users [post]
 func (h *UserHandler) CreateUser(c echo.Context) error {
+
 	var user model.User
 	if err := c.Bind(&user); err != nil {
 		return c.JSON(http.StatusBadRequest, echo.Map{"error": "invalid body"})

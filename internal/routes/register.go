@@ -6,8 +6,8 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func RegisterAllRoutes(e *echo.Group, c *di.Container) {
-	api := e.Group("/api/v1")
+func RegisterAllRoutes(api *echo.Group, c *di.Container) {
+	// api := e.Group("/api/v1")
 
 	// User routes
 	RegisterUserRoutes(api, c.UserHandler)

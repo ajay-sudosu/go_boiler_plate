@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample server for an e-commerce system.",
-        "title": "E-Commerce API",
+        "description": "This is a sample server.",
+        "title": "Sample Code to start with go using echo",
         "contact": {},
         "version": "1.0"
     },

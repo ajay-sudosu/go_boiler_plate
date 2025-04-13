@@ -5,9 +5,9 @@ import (
 	"log"
 )
 
-// @title        E-Commerce API
+// @title        Sample Code to start with go using echo
 // @version      1.0
-// @description  This is a sample server for an e-commerce system.
+// @description  This is a sample server.
 // @host         localhost:8080
 // @BasePath     /api
 func main() {

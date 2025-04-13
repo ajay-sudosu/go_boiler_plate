@@ -7,6 +7,7 @@ import (
 )
 
 func RegisterUserRoutes(e *echo.Group, h *handler.UserHandler) {
-	e.GET("/users", h.CreateUser)
+	e.POST("/users", h.CreateUser)
 	e.GET("/users/:id", h.GetUsers)
+
 }
