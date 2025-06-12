@@ -2,6 +2,7 @@ package di
 
 import (
 	"abc/internal/handler"
+
 	"abc/internal/repository/mongo_repo"
 	"abc/internal/usecase"
 
@@ -9,21 +10,22 @@ import (
 )
 
 type Container struct {
-	UserHandler    *handler.UserHandler
+	NetworkHandler *handler.NetworkHandler
 	ProductHandler *handler.ProductHandler
 }
 
 func NewContainer(db *mongo.Database) (*Container, error) {
-	userRepo := mongo_repo.NewUserRepository(db)
-	userUsecase := usecase.NewUserUsecase(userRepo)
-	userHandler := handler.NewUserHandler(userUsecase)
+	networkRepo := mongo_repo.NewNetworkRepository(db)
+	// networkAdaptor := adaptor.NetworkAdapter()
+	userUsecase := usecase.NewNetworkUsecase(networkRepo)
+	networkHandler := handler.NewUserHandler(userUsecase)
 
 	productRepo := mongo_repo.NewProductRepository(db)
 	productUsecase := usecase.NewProductUsecase(productRepo)
 	productHandler := handler.NewProductHandler(productUsecase)
 
 	return &Container{
-		UserHandler:    userHandler,
+		NetworkHandler: networkHandler,
 		ProductHandler: productHandler,
 	}, nil
 }

@@ -2,27 +2,28 @@ package mongo_repo
 
 import (
 	"abc/internal/model"
+	"abc/internal/repository"
 	"context"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type MongoUserRepository struct {
+type MongoNetworkRepository struct {
 	collection *mongo.Collection
 }
 
-func NewUserRepository(db *mongo.Database) *MongoUserRepository {
-	return &MongoUserRepository{
+func NewNetworkRepository(db *mongo.Database) repository.NetworkRepository {
+	return &MongoNetworkRepository{
 		collection: db.Collection("users"),
 	}
 }
 
-func (r *MongoUserRepository) CreateUser(user *model.User) error {
+func (r *MongoNetworkRepository) CreateNetwork(user *model.User) error {
 	_, err := r.collection.InsertOne(context.Background(), user)
 	return err
 }
 
-func (r *MongoUserRepository) GetAllUsers() ([]*model.User, error) {
+func (r *MongoNetworkRepository) GetNetworks() ([]*model.User, error) {
 	cur, err := r.collection.Find(context.Background(), map[string]interface{}{})
 	if err != nil {
 		return nil, err

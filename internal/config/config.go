@@ -19,8 +19,8 @@ func Load() *Config {
 
 	return &Config{
 		MongoURI:   getEnv("MONGO_URI", "mongodb://localhost:27017"),
-		DBName:     getEnv("DB_NAME", "networks"),
-		Port:       getEnv("PORT", "8080"),
+		DBName:     getEnv("DB_NAME", "users"),
+		Port:       getEnv("PORT", "8000"),
 		LibvirtURI: getEnv("LIBVIRTURI", "qemu:///system"),
 	}
 }

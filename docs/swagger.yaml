@@ -13,8 +13,6 @@ definitions:
     properties:
       email:
         type: string
-      id:
-        type: string
       name:
         type: string
     type: object

@@ -10,7 +10,7 @@ func RegisterAllRoutes(api *echo.Group, c *di.Container) {
 	// api := e.Group("/api/v1")
 
 	// User routes
-	RegisterUserRoutes(api, c.UserHandler)
+	RegisterUserRoutes(api, c.NetworkHandler)
 
 	// Product routes
 	RegisterProductRoutes(api, c.ProductHandler)
